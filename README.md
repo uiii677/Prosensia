@@ -46,3 +46,11 @@ Total Marks = 249/300
 Average = 83%
 Grade: A
 
+Day 4 Task Completed: C++ Programs for Integer Reversal and Prime Check
+
+🔹 Implemented a C++ program to reverse an integer using a loop with edge case handling (0, negative, and large numbers).
+🔹 Wrote a second program to check whether a given number is prime, using efficient loop logic up to sqrt(n).
+🔹 Added comments to explain the logic clearly in both programs.
+🔹 Validated edge cases as instructed: 0, 1, negative values, and large inputs.
+
+📌 Task Objective: Practice loops, conditionals, and number operations in C++.
