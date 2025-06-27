@@ -46,6 +46,16 @@ Total Marks = 249/300
 Average = 83%
 Grade: A
 
+Day 3 Task Completed: C++ Program for Eligibility Check
+
+🔹 Developed a C++ program that takes user's Name, Age, and CGPA as input.
+🔹 Applied conditional logic to check if the user is eligible (Age ≥ 18 and CGPA ≥ 2.5).
+🔹 Added detailed output to explain the reason if the user is not eligible.
+🔹 Practiced usage of logical operators (&&), input/output, and if/else statements.
+
+📌 Task Objective: Strengthen basics of input handling, conditions, and logical thinking in C++.
+
+
 Day 4 Task Completed: C++ Programs for Integer Reversal and Prime Check
 
 🔹 Implemented a C++ program to reverse an integer using a loop with edge case handling (0, negative, and large numbers).
