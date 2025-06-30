@@ -63,4 +63,29 @@ Day 4 Task Completed: C++ Programs for Integer Reversal and Prime Check
 🔹 Added comments to explain the logic clearly in both programs.
 🔹 Validated edge cases as instructed: 0, 1, negative values, and large inputs.
 
-📌 Task Objective: Practice loops, conditionals, and number operations in C++.
+📌 Task Objective: Practice loops, conditionals, and number operations in C++.                                      
+
+Day 5 Completed
+🔹 Task Overview:
+Today, I implemented three logical functions in C++:
+
+Recursive Factorial – Handled input constraints to prevent overflow.
+
+Conditional Max Logic – Compared 3 values with tie-handling rules.
+
+Banner & Execution Flow – Ensured clean and user-friendly output display.
+
+🔧 Concepts Practiced:
+✔ Recursion
+✔ Conditional Statements (if-else)
+✔ Input/Output Formatting
+✔ Function Design & Reusability
+
+💡 What I Learned:
+I gained deeper understanding of how to design clean recursive functions with safeguards, and how to apply logical conditions to handle ties and edge cases in value comparisons.
+
+💻 C++ is becoming more intuitive as I continue solving real-world logic problems step by step!
+
+
+
+
