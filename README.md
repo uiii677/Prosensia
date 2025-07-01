@@ -86,6 +86,21 @@ I gained deeper understanding of how to design clean recursive functions with sa
 
 💻 C++ is becoming more intuitive as I continue solving real-world logic problems step by step!
 
+Day 6 Completed
+
+🧮 Task: Array Analysis and Reordering
+🔧 Concepts Practiced:
+
+1D Arrays
+
+Function Creation & Parameter Passing
+
+Conditional Logic & Looping
+
+Manual Array Reordering (Even/Odd)
+
+Index Tracking
+
 
 
 
