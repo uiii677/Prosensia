@@ -1,58 +1,84 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-// Part 1 – Recursive Factorial
-int factorial(int n) {
-    if (n > 12) {
-        cout << "Warning: Value too large, result may overflow!" << endl;
-        return -1;
-    }
-    if (n <= 1)
-        return 1;
-    return n * factorial(n - 1);
+// Function to calculate sum
+int getSum(int arr[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++)
+        sum += arr[i];
+    return sum;
 }
 
-// Part 2 – Conditional Max with Tie Logic
-int customMax(int a, int b, int c) {
-    if (a == b && b == c) {
-        return 0; 
-    }
-    if (a == b && a > c) return a + b;
-    if (a == c && a > b) return a + c;
-    if (b == c && b > a) return b + c;
-
-    
-    if (a > b && a > c) return a;
-    if (b > a && b > c) return b;
-    return c;
+// Function to find index of first maximum
+int getMaxIndex(int arr[], int size) {
+    int maxIndex = 0;
+    for(int i = 1; i < size; i++)
+        if(arr[i] > arr[maxIndex])
+            maxIndex = i;
+    return maxIndex;
 }
 
-// Part 3 – Banner Function
-void printBanner(string message) {
-    cout << "\n=== " << message << " ===" << endl;
+// Function to find index of first minimum
+int getMinIndex(int arr[], int size) {
+    int minIndex = 0;
+    for(int i = 1; i < size; i++)
+        if(arr[i] < arr[minIndex])
+            minIndex = i;
+    return minIndex;
 }
 
+// Function to calculate average (rounded to 2 decimal places)
+float getAverage(int arr[], int size) {
+    int sum = getSum(arr, size);
+    return static_cast<float>(sum) / size;
+}
+
+// Function to reorder array: even first, odd later (preserve order)
+void reorderEvenOdd(int original[], int reordered[], int size) {
+    int index = 0;
+
+    // First add even numbers
+    for(int i = 0; i < size; i++)
+        if(original[i] % 2 == 0)
+            reordered[index++] = original[i];
+
+    // Then add odd numbers
+    for(int i = 0; i < size; i++)
+        if(original[i] % 2 != 0)
+            reordered[index++] = original[i];
+}
 
 int main() {
-    int num, a, b, c;
+    const int SIZE = 5;
+    int arr[SIZE];
+    int reordered[SIZE];
 
+    // Input
+    cout << "Enter 5 numbers: ";
+    for(int i = 0; i < SIZE; i++)
+        cin >> arr[i];
 
-    cout << "Enter a number: ";
-    cin >> num;
+    // Processing
+    int sum = getSum(arr, SIZE);
+    float avg = getAverage(arr, SIZE);
+    int maxIdx = getMaxIndex(arr, SIZE);
+    int minIdx = getMinIndex(arr, SIZE);
+    reorderEvenOdd(arr, reordered, SIZE);
 
-    cout << "Enter 3 numbers: ";
-    cin >> a >> b >> c;
+    // Output
+    cout << "\n=== Analyzing Array ===\n";
+    cout << "Sum = " << sum << endl;
+    cout << fixed << setprecision(2);
+    cout << "Average = " << avg << endl;
+    cout << "Maximum = " << arr[maxIdx] << " at position " << maxIdx + 1 << endl;
+    cout << "Minimum = " << arr[minIdx] << " at position " << minIdx + 1 << endl;
 
-    
-    printBanner("Student Logic Execution");
+    cout << "\nReordered Array: ";
+    for(int i = 0; i < SIZE; i++)
+        cout << reordered[i] << " ";
 
-    int factResult = factorial(num);
-    if (factResult != -1)
-        cout << "Factorial of " << num << " is: " << factResult << endl;
-
-    int maxResult = customMax(a, b, c);
-    cout << "Max function result is: " << maxResult << endl;
-
+    cout << endl;
     return 0;
 }
 
