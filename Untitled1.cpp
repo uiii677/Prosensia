@@ -1,84 +1,83 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
-// Function to calculate sum
-int getSum(int arr[], int size) {
-    int sum = 0;
-    for(int i = 0; i < size; i++)
-        sum += arr[i];
-    return sum;
+// Function to check for spaces
+bool hasSpace(string str) {
+    for (char ch : str) {
+        if (ch == ' ')
+            return true;
+    }
+    return false;
 }
 
-// Function to find index of first maximum
-int getMaxIndex(int arr[], int size) {
-    int maxIndex = 0;
-    for(int i = 1; i < size; i++)
-        if(arr[i] > arr[maxIndex])
-            maxIndex = i;
-    return maxIndex;
+// Function to convert to lowercase manually
+void toLowerCase(string& str) {
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z')
+            str[i] = str[i] + 32;
+    }
 }
 
-// Function to find index of first minimum
-int getMinIndex(int arr[], int size) {
-    int minIndex = 0;
-    for(int i = 1; i < size; i++)
-        if(arr[i] < arr[minIndex])
-            minIndex = i;
-    return minIndex;
+// Function to reverse string manually
+string reverseString(const string& str) {
+    string rev = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+        rev += str[i];
+    }
+    return rev;
 }
 
-// Function to calculate average (rounded to 2 decimal places)
-float getAverage(int arr[], int size) {
-    int sum = getSum(arr, size);
-    return static_cast<float>(sum) / size;
+// Function to check palindrome using index-based comparison
+bool isPalindrome(const string& str) {
+    int start = 0, end = str.length() - 1;
+    while (start < end) {
+        if (str[start] != str[end])
+            return false;
+        start++;
+        end--;
+    }
+    return true;
 }
 
-// Function to reorder array: even first, odd later (preserve order)
-void reorderEvenOdd(int original[], int reordered[], int size) {
-    int index = 0;
-
-    // First add even numbers
-    for(int i = 0; i < size; i++)
-        if(original[i] % 2 == 0)
-            reordered[index++] = original[i];
-
-    // Then add odd numbers
-    for(int i = 0; i < size; i++)
-        if(original[i] % 2 != 0)
-            reordered[index++] = original[i];
+// Function to count vowels, skipping consecutive duplicates
+int countVowels(const string& str) {
+    int count = 0;
+    char lastVowel = '\0';
+    for (char ch : str) {
+        if ((ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') && ch != lastVowel) {
+            count++;
+            lastVowel = ch;
+        } else if (!(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')) {
+            lastVowel = '\0'; // reset if non-vowel appears
+        }
+    }
+    return count;
 }
 
 int main() {
-    const int SIZE = 5;
-    int arr[SIZE];
-    int reordered[SIZE];
+    string input;
+    cout << "Enter a string (no spaces): ";
+    cin >> input;
 
-    // Input
-    cout << "Enter 5 numbers: ";
-    for(int i = 0; i < SIZE; i++)
-        cin >> arr[i];
+    if (hasSpace(input)) {
+        cout << "?? Warning: Input should not contain spaces!" << endl;
+        return 0;
+    }
 
-    // Processing
-    int sum = getSum(arr, SIZE);
-    float avg = getAverage(arr, SIZE);
-    int maxIdx = getMaxIndex(arr, SIZE);
-    int minIdx = getMinIndex(arr, SIZE);
-    reorderEvenOdd(arr, reordered, SIZE);
+    toLowerCase(input);
 
-    // Output
-    cout << "\n=== Analyzing Array ===\n";
-    cout << "Sum = " << sum << endl;
-    cout << fixed << setprecision(2);
-    cout << "Average = " << avg << endl;
-    cout << "Maximum = " << arr[maxIdx] << " at position " << maxIdx + 1 << endl;
-    cout << "Minimum = " << arr[minIdx] << " at position " << minIdx + 1 << endl;
+    string reversed = reverseString(input);
+    bool palindrome = isPalindrome(input);
+    int vowelCount = countVowels(input);
 
-    cout << "\nReordered Array: ";
-    for(int i = 0; i < SIZE; i++)
-        cout << reordered[i] << " ";
+    // Output Report
+    cout << "\n=== String Analysis Report ===" << endl;
+    cout << "Original:  " << input << endl;
+    cout << "Reversed:  " << reversed << endl;
+    cout << "Length:    " << input.length() << endl;
+    cout << "Vowels:    " << vowelCount << endl;
+    cout << "Palindrome: " << (palindrome ? "YES" : "NO") << endl;
 
-    cout << endl;
     return 0;
 }
 
