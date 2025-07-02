@@ -101,6 +101,15 @@ Manual Array Reordering (Even/Odd)
 
 Index Tracking
 
+📝 Day 7 – Completed
+Today’s task focused on character-level string manipulation in C++. The program takes a single-word input, ensures no spaces, converts it to lowercase manually, and performs the following:
 
+Reverse the string without using reverse()
+
+Check for palindrome using index-based comparison
+
+Count vowels, skipping repeated consecutive vowels
+
+This challenge improved my understanding of manual string handling, logic building, and edge case validation without relying on STL shortcuts
 
 
