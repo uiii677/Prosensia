@@ -112,4 +112,14 @@ Count vowels, skipping repeated consecutive vowels
 
 This challenge improved my understanding of manual string handling, logic building, and edge case validation without relying on STL shortcuts
 
+Day 8 Completed
+🔍 Topic: Pointer Labyrinth – Conditional Swapping & Array Traversal
 
+📌 What I Did:
+✔ Implemented pointer-based logic for conditional swapping (only if the absolute difference > 10)
+✔ Traversed and printed an array using pointer arithmetic
+✔ Found the first even number in an array via pointer
+✔ Incremented all odd numbers directly through address manipulation
+
+💡 What I Learned:
+Mastered pointer fundamentals including swapping via dynamic memory, pointer traversal, and logic without using STL or indexing.
