@@ -1,0 +1,115 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+using namespace std;
+
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+    char grade;
+};
+
+// Function to calculate grade
+char getGrade(float marks) {
+    if (marks >= 85) return 'A';
+    else if (marks >= 70) return 'B';
+    else if (marks >= 50) return 'C';
+    else return 'F';
+}
+
+// Add student to file
+void addStudentToFile(const char* filename) {
+    Student s;
+    cout << "Enter ID: ";
+    cin >> s.id;
+    cin.ignore();
+    cout << "Enter Name: ";
+    cin.getline(s.name, 50);
+    cout << "Enter Marks: ";
+    cin >> s.marks;
+
+    if (s.marks < 0 || s.marks > 100) {
+        cout << "Invalid marks. Must be between 0 and 100.\n";
+        return;
+    }
+
+    s.grade = getGrade(s.marks);
+
+    ofstream file(filename, ios::app);
+    file << s.id << "|" << s.name << "|" << s.marks << "|" << s.grade << "\n";
+    file.close();
+
+    cout << "Student added successfully.\n";
+}
+
+// Display all students
+void displayStudentsFromFile(const char* filename) {
+    ifstream file(filename);
+    string line;
+
+    cout << "\nID\tName\tMarks\tGrade\n";
+    cout << "-------------------------------\n";
+    while (getline(file, line)) {
+        int id;
+        char name[50];
+        float marks;
+        char grade;
+
+        int p1 = line.find('|');
+        int p2 = line.find('|', p1 + 1);
+        int p3 = line.find('|', p2 + 1);
+
+        id = stoi(line.substr(0, p1));
+        strcpy(name, line.substr(p1 + 1, p2 - p1 - 1).c_str());
+        marks = stof(line.substr(p2 + 1, p3 - p2 - 1));
+        grade = line[p3 + 1];
+
+        cout << id << "\t" << name << "\t" << marks << "\t" << grade << endl;
+    }
+    file.close();
+}
+
+// Search student by ID
+void searchStudentByID(const char* filename) {
+    int searchID;
+    cout << "Enter ID to search: ";
+    cin >> searchID;
+
+    ifstream file(filename);
+    string line;
+    bool found = false;
+
+    while (getline(file, line)) {
+        int id = stoi(line.substr(0, line.find('|')));
+        if (id == searchID) {
+            cout << "\nStudent Found: " << line << endl;
+            found = true;
+            break;
+        }
+    }
+    file.close();
+
+    if (!found)
+        cout << "Student not found.\n";
+}
+
+int main() {
+    const char* filename = "students.txt";
+    int choice;
+
+    do {
+        cout << "\n1. Add Student\n2. Display All Students\n3. Search by ID\n4. Exit\nEnter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: addStudentToFile(filename); break;
+            case 2: displayStudentsFromFile(filename); break;
+            case 3: searchStudentByID(filename); break;
+            case 4: cout << "Goodbye!\n"; break;
+            default: cout << "Invalid choice.\n";
+        }
+    } while (choice != 4);
+
+    return 0;
+}
